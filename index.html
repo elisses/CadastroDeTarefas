@@ -7,7 +7,7 @@
     <title>Cadastro de Tarefas</title>
 </head>
 <body>
-    <div>
+    <div id="tarefasApp"> 
         <h1>Controle sua tarefa</h1>
         <h2>Adicionar Tarefa</h2>
         <form>
@@ -25,12 +25,21 @@
             <tbody>
                 <tr>
                     <td><input type="checkbox"></td>
-                    <td>Aqui vai o título da tarefa</td>
+                    <td>{{teste}}</td>
                     <td><button>Delete</button></td>
                 </tr>                
             </tbody>           
         </table>
     </div>
-    
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script>
+        var tarefasApp = new Vue({
+            el: "#tarefasApp",
+            data: {
+                teste: "Olá, mundo"
+            }
+
+        })
+    </script>
 </body>
 </html>
