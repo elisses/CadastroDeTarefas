@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Cadastro de Tarefas</title>
+    <style>
+        .tarefaPronta {
+            text-decoration: line-through;
+        }
+    </style>
 </head>
 <body>
     <div id="tarefasApp"> 
@@ -24,9 +29,9 @@
             </thead> 
             <tbody>
                 <tr v-for= "tarefa in tarefas">
-                    <td><input type="checkbox"></td>
-                    <td>{{tarefa.titulo}}</td>
-                    <td><button>Delete</button></td>
+                    <td><input type="checkbox" v-model="tarefa.pronta"></td>
+                    <td><span v-bind:class="{tarefaPronta: tarefa.pronta}">{{tarefa.titulo}}</span></td>
+                    <td><button v-on:click="removerTarefa(tarefa)">Delete</button></td>
                 </tr>                        
             </tbody>           
         </table>
@@ -50,6 +55,9 @@
                 addTarefa: function(e){
                     e.preventDefault();
                     this.tarefas.push(this.novaTarefa);
+                },
+                removerTarefa: function(tarefa) {
+                   this.tarefas.splice(this.tarefas.indexOf(tarefa), 1)
                 }
             }
 
