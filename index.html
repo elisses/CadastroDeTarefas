@@ -10,8 +10,8 @@
     <div id="tarefasApp"> 
         <h1>Controle sua tarefa</h1>
         <h2>Adicionar Tarefa</h2>
-        <form>
-            <input type="text" placeholder="Titulo da tarefa">
+        <form v-on:submit="addTarefa">
+            <input type="text" v-model="novaTarefa.titulo" placeholder="Titulo da tarefa">
             <input type="submit" value="Adicionar">
         </form>
         <hr>
@@ -40,7 +40,17 @@
                     { titulo: "Desenvolver API para o sistema", pronta: false },
                     { titulo: "Criar controle de acesso", pronta: false },
                     { titulo: "Enviar novas mudanças para o servidor", pronta: false },
-                ]
+                ],
+                novaTarefa: {
+                    titulo: '',
+                    pronta: false
+                }
+            },
+            methods: {
+                addTarefa: function(e){
+                    e.preventDefault();
+                    this.tarefas.push(this.novaTarefa);
+                }
             }
 
         })
