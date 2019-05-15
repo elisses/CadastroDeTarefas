@@ -23,11 +23,11 @@
                 <th>Remover</th>
             </thead> 
             <tbody>
-                <tr>
+                <tr v-for= "tarefa in tarefas">
                     <td><input type="checkbox"></td>
-                    <td>{{teste}}</td>
+                    <td>{{tarefa.titulo}}</td>
                     <td><button>Delete</button></td>
-                </tr>                
+                </tr>                        
             </tbody>           
         </table>
     </div>
@@ -36,7 +36,11 @@
         var tarefasApp = new Vue({
             el: "#tarefasApp",
             data: {
-                teste: "Olá, mundo"
+                tarefas: [
+                    { titulo: "Desenvolver API para o sistema", pronta: false },
+                    { titulo: "Criar controle de acesso", pronta: false },
+                    { titulo: "Enviar novas mudanças para o servidor", pronta: false },
+                ]
             }
 
         })
